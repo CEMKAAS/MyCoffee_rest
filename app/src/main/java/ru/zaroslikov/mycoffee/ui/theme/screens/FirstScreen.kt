@@ -29,7 +29,7 @@ import ru.zaroslikov.mycoffee.model.Coffee
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FirstScreen(
-    coffeeUiState:CoffeeUiState,
+    coffeeUiState: CoffeeUiState,
     modifier: Modifier = Modifier,
     contentPadding: PaddingValues = PaddingValues(0.dp)
 ) {
@@ -38,10 +38,12 @@ fun FirstScreen(
         is CoffeeUiState.Success -> ResultScreen(
             coffeeList = coffeeUiState.coffee, modifier = modifier.fillMaxWidth()
         )
-        is CoffeeUiState.Error -> ErrorScreen( modifier = modifier.fillMaxSize())
+
+        is CoffeeUiState.Error -> ErrorScreen(modifier = modifier.fillMaxSize())
     }
 
 }
+
 @Composable
 fun LoadingScreen(modifier: Modifier = Modifier) {
     Text(text = "Загрузка")
@@ -57,9 +59,10 @@ fun ErrorScreen(modifier: Modifier = Modifier) {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text = "Загрузка")
+        Text(text = "ошибка")
     }
 }
+
 @Composable
 fun ResultScreen(
     modifier: Modifier,
@@ -99,7 +102,7 @@ private fun InventoryList(
     LazyColumn(
         modifier = modifier,
     ) {
-        items(coffeeList){
+        items(coffeeList) {
             CoffeeColum(it, modifier = modifier)
         }
     }

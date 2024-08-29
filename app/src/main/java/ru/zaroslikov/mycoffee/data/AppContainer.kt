@@ -12,10 +12,14 @@ interface AppContainer {
 
 class DefaultAppContainer : AppContainer {
 
-    private val BASE_URL =
-        "http://localhost:8080/api/"
+//    private val BASE_URL =
+//        "http://192.168.31.136:8080"
 
-    private val retrofit = Retrofit.Builder()
+    private val BASE_URL =
+        "http://10.0.2.2:8080/"
+
+
+        private val retrofit = Retrofit.Builder()
         .addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))
         .baseUrl(BASE_URL)
         .build()

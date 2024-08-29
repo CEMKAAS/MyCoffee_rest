@@ -24,7 +24,7 @@ fun MyCoffeeApp(){
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
     Scaffold(
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
-        topBar = { MarsTopAppBar(scrollBehavior = scrollBehavior) }
+//        topBar = { MarsTopAppBar(scrollBehavior = scrollBehavior) }
     ) {
         Surface(
             modifier = Modifier.fillMaxSize()

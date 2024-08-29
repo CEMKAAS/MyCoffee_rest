@@ -3,4 +3,4 @@ package ru.zaroslikov.mycoffee.model
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Coffee(val id: Long, val name: String, val count: Int)
+data class Coffee( val id : Int, val name: String, val count: Int)

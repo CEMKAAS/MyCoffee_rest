@@ -17,14 +17,7 @@ import ru.zaroslikov.mycoffee.model.Coffee
 import ru.zaroslikov.mycoffee.model.CoffeeDTO
 import java.io.IOException
 
-sealed interface CoffeeUiState {
-    data class Success(val coffee: List<Coffee>) : CoffeeUiState
-    object Error : CoffeeUiState
-    object Loading : CoffeeUiState
-}
-
-
-class CoffeeViewModel(private val coffeeRepository: CoffeeRepository) : ViewModel() {
+class ProfileViewModel(private val coffeeRepository: CoffeeRepository) : ViewModel() {
 
     var coffeeUiState: CoffeeUiState by mutableStateOf(CoffeeUiState.Loading)
     private set
@@ -48,17 +41,12 @@ class CoffeeViewModel(private val coffeeRepository: CoffeeRepository) : ViewMode
         }
     }
 
-    suspend fun postCoffees(coffee: CoffeeDTO) {
-           coffeeRepository.postCoffees(coffee)
-    }
-
-
     companion object {
         val Factory: ViewModelProvider.Factory = viewModelFactory {
             initializer {
                 val application = (this[APPLICATION_KEY] as MyCoffeeApplication)
                 val marsPhotosRepository = application.container.coffeeRepository
-                CoffeeViewModel(coffeeRepository = marsPhotosRepository)
+                ProfileViewModel(coffeeRepository = marsPhotosRepository)
             }
         }
     }
